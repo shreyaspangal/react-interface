@@ -55,8 +55,8 @@ function App() {
   const lastId = appointmentList.reduce((max, item) => Number(item.id) > max ? Number(item.id) : max, 0);
 
   return (
-    <div className="App container mx-auto mt-3 font-thin">
-      <h1 className="text-5xl mb-5">
+    <div className="App container mx-auto my-8 xs: w-11/12 sm:w-4/5 lg:w-1/2 font-thin">
+      <h1 className="xs:text-3xl md:text-5xl mb-5">
         < BiCalendarEvent className="inline-block align-top text-blue-500" /> Your Appointments
       </h1>
       <AddAppointment
