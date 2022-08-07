@@ -5,7 +5,6 @@ import AddAppointment from './components/AddAppointment';
 import AppointmentInfo from "./components/AppointmentInfo";
 
 function App() {
-
   let [appointmentList, setAppointmentList] = useState([]);
   let [query, setQuery] = useState('');
   let [sortBy, setSortBy] = useState('petName');
@@ -46,14 +45,24 @@ function App() {
       a[sortBy].toLowerCase() < b[sortBy].toLowerCase()
         ? -1 * order : 1 * order
     )
-  })
+  });
+
+  const onSendAppointment = (addInfo) => {
+    const newInfo = [...appointmentList, addInfo];
+    setAppointmentList(newInfo);
+  }
+
+  const lastId = appointmentList.reduce((max, item) => Number(item.id) > max ? Number(item.id) : max, 0);
 
   return (
     <div className="App container mx-auto mt-3 font-thin">
       <h1 className="text-5xl mb-5">
         < BiCalendarEvent className="inline-block align-top text-blue-500" /> Your Appointments
       </h1>
-      <AddAppointment />
+      <AddAppointment
+        onSendAppointment={onSendAppointment}
+        lastId={lastId}
+      />
       <Search
         query={query}
         onQueryChange={onQueryChange}
