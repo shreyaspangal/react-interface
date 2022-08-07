@@ -54,11 +54,19 @@ function App() {
         < BiCalendarEvent className="inline-block align-top text-blue-500" /> Your Appointments
       </h1>
       <AddAppointment />
-      <Search query={query} onQueryChange={onQueryChange} />
+      <Search
+        query={query}
+        onQueryChange={onQueryChange}
+        sortBy={sortBy} setSortBy={setSortBy}
+        orderBy={orderBy} setOrderBy={setOrderBy}
+      />
       <ul className="divide-y divide-gray-200">
         {
           filteredAppointments.map(appointment => (
-            <AppointmentInfo key={appointment.id} appointment={appointment} onDeleteAppointment={onDeleteAppointment} />
+            <AppointmentInfo
+              key={appointment.id}
+              appointment={appointment}
+              onDeleteAppointment={onDeleteAppointment} />
           ))
         }
       </ul>
